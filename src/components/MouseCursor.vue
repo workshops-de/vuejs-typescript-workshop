@@ -20,6 +20,19 @@ export default {
       y: 4,
     };
   },
+  watch: {
+    x(val) {
+      if (val > 150) {
+        alert('X is greater than 150');
+      }
+    },
+    y(newValue, oldValue) {
+      if (oldValue > 300 && newValue < oldValue) {
+        alert('Y ftw!');
+        this.y = 0;
+      }
+    },
+  },
   methods: {
     updatePosition(e) {
       this.x = e.offsetX;
