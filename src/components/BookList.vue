@@ -1,7 +1,7 @@
 <template>
   <table>
     <tr
-      v-for="book in books"
+      v-for="book in filteredBooks"
       :key="book.isbn"
     >
       <td>{{ book.title }}</td>
@@ -30,6 +30,11 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    filteredBooks() {
+      return this.books.filter((book) => book.title.toLocaleLowerCase().includes('tt'));
+    },
   },
 };
 </script>

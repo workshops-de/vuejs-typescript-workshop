@@ -1,7 +1,7 @@
 <template>
   <div
     :id="id"
-    @mousemove="x=$event.offsetX;y=$event.offsetY"
+    @mousemove="updatePosition"
   >
     <span>x: {{ x }}, y: {{ y }}</span>
     <div
@@ -19,6 +19,12 @@ export default {
       x: 12,
       y: 4,
     };
+  },
+  methods: {
+    updatePosition(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
+    },
   },
 };
 </script>
