@@ -3,6 +3,7 @@
     <AppNavigation />
     <MouseCursor />
     <InfoBox />
+    <BookList />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import AppNavigation from '@/components/AppNavigation.vue';
 import MouseCursor from '@/components/MouseCursor.vue';
 import InfoBox from '@/components/InfoBox.vue';
+import BookList from '@/components/BookList.vue';
 
 export default {
   name: 'App',
@@ -17,6 +19,7 @@ export default {
     AppNavigation,
     MouseCursor,
     InfoBox,
+    BookList,
   },
 };
 </script>
