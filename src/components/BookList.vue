@@ -1,16 +1,16 @@
 <template>
   <table>
-    <tr
+    <BookListItem
       v-for="book in books"
       :key="book.isbn"
-    >
-      <td>{{ book.title }}</td>
-      <td>{{ book.isbn }}</td>
-    </tr>
+      v-bind="book"
+    />
   </table>
 </template>
 
 <script>
+import BookListItem from '@/components/BookListItem.vue';
+
 const BOOKS = [
   {
     title: 'Design Patterns',
@@ -28,6 +28,9 @@ const BOOKS = [
 
 export default {
   name: 'BookList',
+  components: {
+    BookListItem,
+  },
   data() {
     return {
       books: [],
