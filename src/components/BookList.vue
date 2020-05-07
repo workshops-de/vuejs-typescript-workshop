@@ -4,6 +4,7 @@
       v-for="book in books"
       :key="book.isbn"
       v-bind="book"
+      @read="readBook(book)"
     />
   </table>
 </template>
@@ -35,6 +36,15 @@ export default {
     return {
       books: [],
     };
+  },
+  methods: {
+    readBook(book) {
+      const index = this.books.indexOf(book);
+      this.books.splice(index, 1, {
+        ...book,
+        read: true,
+      });
+    },
   },
   created() {
     this.books = BOOKS;
