@@ -38,6 +38,10 @@ export default {
     this.isbn = to.params.isbn;
     next();
   },
+  beforeRouteLeave(_, _2, next) {
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!');
+    return answer ? next() : next(false);
+  },
 };
 </script>
 
