@@ -1,14 +1,18 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home.vue';
+import BookList from '@/views/BookList.vue';
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home,
+    path: '',
+    redirect: '/books',
+  },
+  {
+    path: '/books',
+    name: 'Books',
+    component: BookList,
   },
   {
     path: '/about',
