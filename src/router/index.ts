@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Books from '@/views/Books.vue';
-import BookList from '@/views/BookList.vue';
-import BookDetail from '@/views/BookDetail.vue';
+
+const Books = () => import(/* webpackChunkName: "books" */ '@/views/Books.vue');
+const BookList = () => import(/* webpackChunkName: "books" */ '@/views/BookList.vue');
+const BookDetail = () => import(/* webpackChunkName: "books" */ '@/views/BookDetail.vue');
 
 Vue.use(VueRouter);
 
