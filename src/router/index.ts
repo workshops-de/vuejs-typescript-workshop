@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import BookList from '@/views/BookList.vue';
+import BookDetail from '@/views/BookDetail.vue';
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,11 @@ const routes: Array<RouteConfig> = [
     path: '/books',
     name: 'Books',
     component: BookList,
+  },
+  {
+    path: '/books/:isbn',
+    name: 'BookDetail',
+    component: BookDetail,
   },
   {
     path: '/about',

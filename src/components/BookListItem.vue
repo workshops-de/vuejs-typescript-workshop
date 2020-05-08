@@ -1,7 +1,11 @@
 <template>
   <tr>
     <td>{{ title }} <small>{{ subtitle }}</small></td>
-    <td>{{ isbn }}</td>
+    <td>
+      <router-link :to="{ name: 'BookDetail', params: { isbn: isbn }}">
+        {{ isbn }}
+      </router-link>
+    </td>
     <td>
       <button
         :disabled="read"
