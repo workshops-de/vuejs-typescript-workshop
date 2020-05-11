@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h1>{{ book.title }}</h1>
+    <h1>
+      {{ book.title }}
+      (<router-link :to="{name: 'BookEdit', params: { isbn: isbn }}">Edit</router-link>)
+    </h1>
     <ol>
       <li
         v-for="(value, key) in book"
