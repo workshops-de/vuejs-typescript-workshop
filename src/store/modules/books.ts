@@ -1,22 +1,16 @@
-import { getBooks } from '@/api/books';
+import { Module } from 'vuex';
+import { RootState } from '@/store/interfaces';
+import { BookState } from '@/store/modules/interfaces';
+import actions from '@/store/modules/actions';
+import mutations from '@/store/modules/mutations';
 
-export default {
+const books: Module<BookState, RootState> = {
   namespaced: true,
   state: {
     books: [],
   },
-  mutations: {
-    UPDATE_BOOKS(state, books) {
-      state.books = books;
-    },
-  },
-  actions: {
-    SET_BOOKS({ commit }, books) {
-      commit('UPDATE_BOOKS', books);
-    },
-    async GET_BOOKS({ commit }) {
-      const books = await getBooks();
-      commit('UPDATE_BOOKS', books);
-    },
-  },
+  mutations,
+  actions,
 };
+
+export default books;

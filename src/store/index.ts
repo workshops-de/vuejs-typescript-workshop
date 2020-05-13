@@ -1,14 +1,14 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { StoreOptions } from 'vuex';
 import books from '@/store/modules/books';
+import { RootState } from '@/store/interfaces';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+const store: StoreOptions<RootState> = {
   modules: {
     books,
   },
-});
+};
+
+export default new Vuex.Store<RootState>(store);
