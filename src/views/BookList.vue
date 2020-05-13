@@ -12,45 +12,32 @@
 <script>
 import BookListItem from '@/components/BookListItem.vue';
 
-const BOOKS = [
-  {
-    title: 'Design Patterns',
-    isbn: '978-0-20163-361-0',
-  },
-  {
-    title: 'REST und HTTP',
-    isbn: '978-3-86490-120-1',
-  },
-  {
-    title: 'Eloquent JavaScript',
-    isbn: '978-1-59327-584-6',
-  },
-];
-
 export default {
   name: 'BookList',
   components: {
     BookListItem,
   },
-  data() {
-    return {
-      books: [],
-    };
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
   },
   methods: {
     readBook(book) {
-      const index = this.books.indexOf(book);
-      this.books.splice(index, 1, {
-        ...book,
-        read: true,
-      });
+      this.$store.dispatch('SET_BOOKS', [
+        ...this.books.map((bookEntry) => {
+          if (bookEntry.isbn === book.isbn) {
+            return {
+              ...bookEntry,
+              read: true,
+            };
+          }
+          return bookEntry;
+        }),
+      ]);
     },
     async updateBooks() {
-      const response = await fetch('http://localhost:4730/books');
-      this.books = await response.json();
-      this.$store.dispatch('SET_BOOKS', {
-        books: this.books,
-      });
+      await this.$store.dispatch('GET_BOOKS');
     },
   },
   created() {
