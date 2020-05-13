@@ -5,11 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    books: [],
   },
   mutations: {
+    UPDATE_BOOKS(state, payload) {
+      state.books = payload.books;
+    },
   },
   actions: {
-  },
-  modules: {
+    SET_BOOKS({ commit }, payload) {
+      commit('UPDATE_BOOKS', payload);
+    },
   },
 });
